@@ -24,6 +24,8 @@ public class CricketLeagueAnalyser {
         Comparator<IPLRunsCSV> sixFourWithAvg = Comparator.comparing(iplData -> iplData.sixs + iplData.fours);
         this.sortMap.put(SortByField.SIXFOURSAVG, sixFourWithAvg.thenComparing(iplData -> iplData.strikingRates));
 
+        Comparator<IPLRunsCSV> avgWithStrikingRates = Comparator.comparing(iplData -> iplData.average);
+        this.sortMap.put(SortByField.AVGWITHSTRIKERATE, avgWithStrikingRates.thenComparing(iplData -> iplData.strikingRates));
     }
 
     public String analyseIPLData(SortByField sortByField, String csvFilePath) {
