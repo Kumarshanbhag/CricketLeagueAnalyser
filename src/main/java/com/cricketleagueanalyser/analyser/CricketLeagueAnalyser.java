@@ -20,6 +20,10 @@ public class CricketLeagueAnalyser {
         this.sortMap.put(SortByField.AVG, Comparator.comparing(iplData -> iplData.average));
         this.sortMap.put(SortByField.STRIKINGRATES, Comparator.comparing(iplData -> iplData.strikingRates));
         this.sortMap.put(SortByField.SIXFOURS, Comparator.comparing(iplData -> iplData.sixs + iplData.fours));
+
+        Comparator<IPLRunsCSV> sixFourWithAvg = Comparator.comparing(iplData -> iplData.sixs + iplData.fours);
+        this.sortMap.put(SortByField.SIXFOURSAVG, sixFourWithAvg.thenComparing(iplData -> iplData.strikingRates));
+
     }
 
     public String analyseIPLData(SortByField sortByField, String csvFilePath) {

@@ -97,4 +97,12 @@ public class CricketLeagueAnalyserTest {
             Assert.assertEquals(CricketLeagueAnalyserException.ExceptionType.NO_CENSUS_DATA, e.type);
         }
     }
+
+    //UC4
+    @Test
+    public void givenIplCSVFile_ShouldReturnStrikingRateWithSixAndFur() {
+        String numOfRecords = cricketLeagueAnalyser.analyseIPLData(SortByField.SIXFOURSAVG, IPL_2019_MOST_RUNS_CSV_PATH);
+        IPLRunsCSV[] censusCSV = new Gson().fromJson(numOfRecords, IPLRunsCSV[].class);
+        Assert.assertEquals("Andre Russell", censusCSV[0].player);
+    }
 }

@@ -1,5 +1,5 @@
 package com.cricketleagueanalyser.enums;
 
 public enum SortByField {
-    AVG, STRIKINGRATES, SIXFOURS;
+    AVG, STRIKINGRATES, SIXFOURS, SIXFOURSAVG;
 }
