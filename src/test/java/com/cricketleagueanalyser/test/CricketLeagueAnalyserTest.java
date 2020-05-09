@@ -13,6 +13,7 @@ import org.junit.Test;
 public class CricketLeagueAnalyserTest {
     private static final String IPL_2019_MOST_RUNS_CSV_PATH = "./src/test/resources/IPL2019FactsheetMostRuns.csv";
     private static final String WRONG_IPL_2019_MOST_RUNS_CSV_PATH = "./src/MAIN/resources/IPL2019FactsheetMostRuns.csv";
+    private static final String WRONG_IPL_2019_MOST_RUNS_CSV_TYPE = "./src/test/resources/IPL2019FactsheetMostRuns.json";
 
     private static CricketLeagueAnalyser cricketLeagueAnalyser;
 
@@ -33,6 +34,15 @@ public class CricketLeagueAnalyserTest {
     public void givenIplCSVFile_WithWrongFilePath_ShouldReturnException() {
         try {
             cricketLeagueAnalyser.analyseIPLData(SortByField.AVG, WRONG_IPL_2019_MOST_RUNS_CSV_PATH);
+        } catch (CSVBuilderException e) {
+            Assert.assertEquals(CSVBuilderException.ExceptionType.UNABLE_TO_PARSE, e.type);
+        }
+    }
+
+    @Test
+    public void givenIplCSVFile_WithWrongFileType_ShouldReturnException() {
+        try {
+            cricketLeagueAnalyser.analyseIPLData(SortByField.AVG, WRONG_IPL_2019_MOST_RUNS_CSV_TYPE);
         } catch (CSVBuilderException e) {
             Assert.assertEquals(CSVBuilderException.ExceptionType.UNABLE_TO_PARSE, e.type);
         }
