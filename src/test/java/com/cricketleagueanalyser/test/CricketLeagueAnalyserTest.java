@@ -105,4 +105,14 @@ public class CricketLeagueAnalyserTest {
         IPLRunsCSV[] censusCSV = new Gson().fromJson(numOfRecords, IPLRunsCSV[].class);
         Assert.assertEquals("Andre Russell", censusCSV[0].player);
     }
+
+    @Test
+    public void givenIplData_WhenSortedOnsStrikingRateWithSixFoursAndNoDataFound_ShouldReturnException() {
+        List emptyList = new ArrayList();
+        try {
+            cricketLeagueAnalyser.sortList(SortByField.SIXFOURSAVG, emptyList);
+        } catch (CricketLeagueAnalyserException e) {
+            Assert.assertEquals(CricketLeagueAnalyserException.ExceptionType.NO_CENSUS_DATA, e.type);
+        }
+    }
 }
