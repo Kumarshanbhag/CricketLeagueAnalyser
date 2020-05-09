@@ -18,6 +18,7 @@ public class CricketLeagueAnalyser {
     public CricketLeagueAnalyser() {
         this.sortMap = new HashMap<>();
         this.sortMap.put(SortByField.AVG, Comparator.comparing(iplData -> iplData.average));
+        this.sortMap.put(SortByField.STRIKINGRATES, Comparator.comparing(iplData -> iplData.strikingRates));
     }
 
     public String analyseIPLData(SortByField sortByField, String csvFilePath) {

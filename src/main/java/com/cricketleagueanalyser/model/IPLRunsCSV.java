@@ -9,4 +9,6 @@ public class IPLRunsCSV {
     @CsvBindByName(column = "Avg", required = true)
     public double average;
 
+    @CsvBindByName(column = "SR", required = true)
+    public double strikingRates;
 }

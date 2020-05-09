@@ -62,4 +62,11 @@ public class CricketLeagueAnalyserTest {
         }
     }
 
+    @Test
+    public void givenIplCSVFile_ShouldReturnTopStrikingAverages() {
+        String numOfRecords = cricketLeagueAnalyser.analyseIPLData(SortByField.STRIKINGRATES, IPL_2019_MOST_RUNS_CSV_PATH);
+        IPLRunsCSV[] censusCSV = new Gson().fromJson(numOfRecords, IPLRunsCSV[].class);
+        Assert.assertEquals("Ishant Sharma", censusCSV[0].player);
+    }
+
 }
