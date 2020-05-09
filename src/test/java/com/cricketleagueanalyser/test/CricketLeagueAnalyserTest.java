@@ -2,12 +2,16 @@ package com.cricketleagueanalyser.test;
 
 import com.cricketleagueanalyser.analyser.CricketLeagueAnalyser;
 import com.cricketleagueanalyser.enums.SortByField;
+import com.cricketleagueanalyser.exception.CricketLeagueAnalyserException;
 import com.cricketleagueanalyser.model.IPLRunsCSV;
 import com.csvparser.CSVBuilderException;
 import com.google.gson.Gson;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class CricketLeagueAnalyserTest {
@@ -45,6 +49,16 @@ public class CricketLeagueAnalyserTest {
             cricketLeagueAnalyser.analyseIPLData(SortByField.AVG, WRONG_IPL_2019_MOST_RUNS_CSV_TYPE);
         } catch (CSVBuilderException e) {
             Assert.assertEquals(CSVBuilderException.ExceptionType.UNABLE_TO_PARSE, e.type);
+        }
+    }
+
+    @Test
+    public void givenIplData_WhenSortedOnBattingAverageAndNoDataFound_ShouldReturnException() {
+        List emptyList = new ArrayList();
+        try {
+            cricketLeagueAnalyser.sortList(SortByField.AVG, emptyList);
+        } catch (CricketLeagueAnalyserException e) {
+            Assert.assertEquals(CricketLeagueAnalyserException.ExceptionType.NO_CENSUS_DATA, e.type);
         }
     }
 
