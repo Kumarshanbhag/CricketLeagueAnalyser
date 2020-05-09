@@ -133,4 +133,12 @@ public class CricketLeagueAnalyserTest {
             Assert.assertEquals(CricketLeagueAnalyserException.ExceptionType.NO_CENSUS_DATA, e.type);
         }
     }
+
+    //UC6
+    @Test
+    public void givenIplCSVFile_ShouldReturnRunsWithAverage() {
+        String numOfRecords = cricketLeagueAnalyser.analyseIPLData(SortByField.MAXRUNS_WITH_BESTAVERAGE, IPL_2019_MOST_RUNS_CSV_PATH);
+        IPLRunsCSV[] censusCSV = new Gson().fromJson(numOfRecords, IPLRunsCSV[].class);
+        Assert.assertEquals("David Warner", censusCSV[0].player);
+    }
 }

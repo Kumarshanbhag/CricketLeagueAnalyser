@@ -26,6 +26,10 @@ public class CricketLeagueAnalyser {
 
         Comparator<IPLRunsCSV> avgWithStrikingRates = Comparator.comparing(iplData -> iplData.average);
         this.sortMap.put(SortByField.AVGWITHSTRIKERATE, avgWithStrikingRates.thenComparing(iplData -> iplData.strikingRates));
+
+        Comparator<IPLRunsCSV> maxRunsWithBestAverages = Comparator.comparing(iplData -> iplData.runs);
+        this.sortMap.put(SortByField.MAXRUNS_WITH_BESTAVERAGE, maxRunsWithBestAverages.thenComparing(iplData -> iplData.average));
+
     }
 
     public String analyseIPLData(SortByField sortByField, String csvFilePath) {

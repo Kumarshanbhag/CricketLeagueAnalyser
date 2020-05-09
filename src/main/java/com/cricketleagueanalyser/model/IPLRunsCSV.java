@@ -17,4 +17,7 @@ public class IPLRunsCSV {
 
     @CsvBindByName(column = "4s", required = true)
     public double fours;
+
+    @CsvBindByName(column = "Runs", required = true)
+    public double runs;
 }
