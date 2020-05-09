@@ -28,7 +28,7 @@ public class CricketLeagueAnalyser {
         this.sortMap.put(SortByField.AVGWITHSTRIKERATE, avgWithStrikingRates.thenComparing(iplData -> iplData.strikingRates));
 
         Comparator<IPLRunsCSV> maxRunsWithBestAverages = Comparator.comparing(iplData -> iplData.runs);
-        this.sortMap.put(SortByField.MAXRUNS_WITH_BESTAVERAGE, maxRunsWithBestAverages.thenComparing(iplData -> iplData.average));
+        this.sortMap.put(SortByField.MAXRUNSWITHBESTAVERAGE, maxRunsWithBestAverages.thenComparing(iplData -> iplData.average));
 
     }
 
