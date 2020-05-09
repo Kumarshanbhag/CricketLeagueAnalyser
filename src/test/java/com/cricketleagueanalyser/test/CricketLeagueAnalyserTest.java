@@ -123,4 +123,14 @@ public class CricketLeagueAnalyserTest {
         IPLRunsCSV[] censusCSV = new Gson().fromJson(numOfRecords, IPLRunsCSV[].class);
         Assert.assertEquals("MS Dhoni", censusCSV[0].player);
     }
+
+    @Test
+    public void givenIplData_WhenSortedOnAverageWithStrikingRateAndNoDataFound_ShouldReturnException() {
+        List emptyList = new ArrayList();
+        try {
+            cricketLeagueAnalyser.sortList(SortByField.AVGWITHSTRIKERATE, emptyList);
+        } catch (CricketLeagueAnalyserException e) {
+            Assert.assertEquals(CricketLeagueAnalyserException.ExceptionType.NO_CENSUS_DATA, e.type);
+        }
+    }
 }
