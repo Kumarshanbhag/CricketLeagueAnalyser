@@ -146,7 +146,7 @@ public class CricketLeagueAnalyserTest {
         }
     }
 
-        //UC6
+    //UC6
     @Test
     public void givenIplCSVFile_ShouldReturnRunsWithAverage() {
         List cricketersList = cricketLeagueAnalyser.analyseIPLData(CricketLeagueAnalyser.BatOrBall.BATTING, IPL_2019_MOST_RUNS_CSV_PATH);
@@ -166,4 +166,12 @@ public class CricketLeagueAnalyserTest {
         }
     }
 
+    //UC7
+    @Test
+    public void givenIplCSVFile_ShouldReturnTopBowlingAverages() {
+        List cricketersList = cricketLeagueAnalyser.analyseIPLData(CricketLeagueAnalyser.BatOrBall.BALLING, IPL_2019_MOST_WKTS_CSV_PATH);
+        String cricketersDataInJson = cricketLeagueAnalyser.sortListAndConvertJson(SortByField.AVG, cricketersList);
+        IPLDAO[] iplDao = new Gson().fromJson(cricketersDataInJson, IPLDAO[].class);
+        Assert.assertEquals("Krishnappa Gowtham", iplDao[0].player);
+    }
 }
