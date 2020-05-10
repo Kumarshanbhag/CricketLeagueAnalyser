@@ -14,4 +14,10 @@ public class IPLWktsCSV {
 
     @CsvBindByName(column = "Econ", required = true)
     public double economy;
+
+    @CsvBindByName(column = "4w", required = true)
+    public int fourWicket;
+
+    @CsvBindByName(column = "5w", required = true)
+    public int fiveWicket;
 }

@@ -4,6 +4,8 @@ import com.cricketleagueanalyser.model.IPLRunsCSV;
 import com.cricketleagueanalyser.model.IPLWktsCSV;
 
 public class IPLDAO {
+    public int fourWicket;
+    public int fiveWicket;
     public double economy;
     public String player;
     public double average;
@@ -25,5 +27,7 @@ public class IPLDAO {
         average = iplCSV.average;
         strikingRates = iplCSV.strikeRate;
         economy = iplCSV.economy;
+        fourWicket = iplCSV.fourWicket;
+        fiveWicket = iplCSV.fiveWicket;
     }
 }
