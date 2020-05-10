@@ -39,5 +39,5 @@ public abstract class IPLAdapter {
         }
     }
 
-    public abstract List loadIPLData(String csvFilePath);
+    public abstract List loadIPLData(String[] csvFilePath);
 }

@@ -6,7 +6,7 @@ import java.util.List;
 
 public class IPLBowlingAdapter extends IPLAdapter {
     @Override
-    public List loadIPLData(String csvFilePath) {
-        return super.loadIPLData(IPLWktsCSV.class, csvFilePath);
+    public List loadIPLData(String[] csvFilePath) {
+        return super.loadIPLData(IPLWktsCSV.class, csvFilePath[0]);
     }
 }

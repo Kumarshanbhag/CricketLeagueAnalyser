@@ -43,7 +43,7 @@ public class CricketLeagueAnalyser {
         this.sortMap.put(SortByField.WICKETWITHAVERAGE, wicket.thenComparing(iplData -> iplData.strikingRates));
     }
 
-    public List analyseIPLData(BatOrBall gameFact, String csvFilePath) {
+    public List analyseIPLData(BatOrBall gameFact, String... csvFilePath) {
         return new IPLAdapterFactory().loadIPLData(gameFact, csvFilePath);
     }
 
