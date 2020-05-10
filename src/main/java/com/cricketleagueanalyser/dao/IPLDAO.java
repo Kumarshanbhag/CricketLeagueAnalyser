@@ -4,6 +4,7 @@ import com.cricketleagueanalyser.model.IPLRunsCSV;
 import com.cricketleagueanalyser.model.IPLWktsCSV;
 
 public class IPLDAO {
+    public int wickets;
     public int fourWicket;
     public int fiveWicket;
     public double economy;
@@ -29,5 +30,6 @@ public class IPLDAO {
         economy = iplCSV.economy;
         fourWicket = iplCSV.fourWicket;
         fiveWicket = iplCSV.fiveWicket;
+        wickets = iplCSV.wickets;
     }
 }

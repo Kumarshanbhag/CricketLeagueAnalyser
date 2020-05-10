@@ -241,7 +241,7 @@ public class CricketLeagueAnalyserTest {
         List cricketersList = cricketLeagueAnalyser.analyseIPLData(CricketLeagueAnalyser.BatOrBall.BALLING, IPL_2019_MOST_WKTS_CSV_PATH);
         String cricketersDataInJson = cricketLeagueAnalyser.sortListAndConvertJson(SortByField.FOURFIVEWICKETWITHSTRIKERATES, cricketersList);
         IPLDAO[] iplDao = new Gson().fromJson(cricketersDataInJson, IPLDAO[].class);
-        Assert.assertEquals("Krishnappa Gowtham", iplDao[0].player);
+        Assert.assertEquals("Lasith Malinga", iplDao[0].player);
     }
 
     @Test
@@ -273,5 +273,14 @@ public class CricketLeagueAnalyserTest {
         } catch (CricketLeagueAnalyserException e) {
             Assert.assertEquals(CricketLeagueAnalyserException.ExceptionType.NO_CENSUS_DATA, e.type);
         }
+    }
+
+    //UC12
+    @Test
+    public void givenIplCSVFile_ShouldReturnMostWicketWithAverageOfBowlers() {
+        List cricketersList = cricketLeagueAnalyser.analyseIPLData(CricketLeagueAnalyser.BatOrBall.BALLING, IPL_2019_MOST_WKTS_CSV_PATH);
+        String cricketersDataInJson = cricketLeagueAnalyser.sortListAndConvertJson(SortByField.WICKETWITHAVERAGE, cricketersList);
+        IPLDAO[] iplDao = new Gson().fromJson(cricketersDataInJson, IPLDAO[].class);
+        Assert.assertEquals("Imran Tahir", iplDao[0].player);
     }
 }
