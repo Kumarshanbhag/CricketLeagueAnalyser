@@ -31,8 +31,8 @@ public class CricketLeagueAnalyser {
         Comparator<IPLDAO> avgWithStrikingRates = Comparator.comparing(iplData -> iplData.average);
         this.sortMap.put(SortByField.AVGWITHSTRIKERATE, avgWithStrikingRates.thenComparing(iplData -> iplData.strikingRates));
 
-        Comparator<IPLDAO> maxRunsWithBestAverages = Comparator.comparing(iplData -> iplData.runs);
-        this.sortMap.put(SortByField.MAXRUNSWITHBESTAVERAGE, maxRunsWithBestAverages.thenComparing(iplData -> iplData.average));
+        Comparator<IPLDAO> maxRuns = Comparator.comparing(iplData -> iplData.runs);
+        this.sortMap.put(SortByField.MAXRUNSWITHBESTAVERAGE, maxRuns.thenComparing(iplData -> iplData.average));
 
         this.sortMap.put(SortByField.ECONOMY, Comparator.comparing(iplData -> iplData.economy));
 
@@ -41,6 +41,9 @@ public class CricketLeagueAnalyser {
 
         Comparator<IPLDAO> wicket = Comparator.comparing(iplData -> iplData.wickets);
         this.sortMap.put(SortByField.WICKETWITHAVERAGE, wicket.thenComparing(iplData -> iplData.strikingRates));
+
+        this.sortMap.put(SortByField.MOSTRUNSWITHWICKETS, maxRuns.thenComparing(iplData -> iplData.wickets));
+
     }
 
     public List analyseIPLData(BatOrBall gameFact, String... csvFilePath) {

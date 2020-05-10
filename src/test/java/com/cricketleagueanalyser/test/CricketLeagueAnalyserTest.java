@@ -314,4 +314,13 @@ public class CricketLeagueAnalyserTest {
             Assert.assertEquals(CricketLeagueAnalyserException.ExceptionType.NO_CENSUS_DATA, e.type);
         }
     }
+
+    //UC14
+    @Test
+    public void givenIplCSVFile_ShouldReturnMostRunsAndMostWickets() {
+        List cricketersList = cricketLeagueAnalyser.analyseIPLData(CricketLeagueAnalyser.BatOrBall.BATTING, IPL_2019_MOST_RUNS_CSV_PATH, IPL_2019_MOST_WKTS_CSV_PATH);
+        String cricketersDataInJson = cricketLeagueAnalyser.sortListAndConvertJson(SortByField.MOSTRUNSWITHWICKETS, cricketersList);
+        IPLDAO[] iplDao = new Gson().fromJson(cricketersDataInJson, IPLDAO[].class);
+        Assert.assertEquals("David Warner", iplDao[0].player);
+    }
 }
