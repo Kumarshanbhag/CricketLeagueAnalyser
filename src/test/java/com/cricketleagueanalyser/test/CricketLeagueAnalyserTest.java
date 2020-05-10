@@ -174,4 +174,15 @@ public class CricketLeagueAnalyserTest {
         IPLDAO[] iplDao = new Gson().fromJson(cricketersDataInJson, IPLDAO[].class);
         Assert.assertEquals("Krishnappa Gowtham", iplDao[0].player);
     }
+
+    @Test
+    public void givenIplData_WhenSortedOnRunsWithBowlingAverageAndNoDataFound_ShouldReturnException() {
+        List emptyList = new ArrayList();
+        try {
+            cricketLeagueAnalyser.analyseIPLData(CricketLeagueAnalyser.BatOrBall.BALLING, IPL_2019_MOST_RUNS_CSV_PATH);
+            cricketLeagueAnalyser.sortListAndConvertJson(SortByField.AVG, emptyList);
+        } catch (CricketLeagueAnalyserException e) {
+            Assert.assertEquals(CricketLeagueAnalyserException.ExceptionType.NO_CENSUS_DATA, e.type);
+        }
+    }
 }
