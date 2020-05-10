@@ -11,5 +11,4 @@ public class IPLWktsCSV {
 
     @CsvBindByName(column = "SR", required = true)
     public double strikeRate;
-
 }
