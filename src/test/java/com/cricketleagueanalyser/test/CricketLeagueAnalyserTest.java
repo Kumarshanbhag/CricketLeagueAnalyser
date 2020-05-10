@@ -214,4 +214,13 @@ public class CricketLeagueAnalyserTest {
             Assert.assertEquals(CricketLeagueAnalyserException.ExceptionType.NO_CENSUS_DATA, e.type);
         }
     }
+
+    //UC8
+    @Test
+    public void givenIplCSVFile_ShouldReturnBestEconomyOfBowlers() {
+        List cricketersList = cricketLeagueAnalyser.analyseIPLData(CricketLeagueAnalyser.BatOrBall.BALLING, IPL_2019_MOST_WKTS_CSV_PATH);
+        String cricketersDataInJson = cricketLeagueAnalyser.sortListAndConvertJson(SortByField.ECONOMY, cricketersList);
+        IPLDAO[] iplDao = new Gson().fromJson(cricketersDataInJson, IPLDAO[].class);
+        Assert.assertEquals("Ben Cutting", iplDao[0].player);
+    }
 }
