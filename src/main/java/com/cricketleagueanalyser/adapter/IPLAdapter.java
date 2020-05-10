@@ -22,16 +22,16 @@ public abstract class IPLAdapter {
         List csvFileList = new ArrayList();
         try (Reader reader = Files.newBufferedReader(Paths.get(csvFilePath))) {
             ICSVBuilder csvBuilder = CSVBuilderFactory.createCSVBuilder();
-            Iterator<E> censusCSVIterator = csvBuilder.getCSVFileIterator(reader, csvClass);
-            Iterable<E> csvIterable = () -> censusCSVIterator;
+            Iterator<E> iplCSVIterator = csvBuilder.getCSVFileIterator(reader, csvClass);
+            Iterable<E> csvIterable = () -> iplCSVIterator;
             if (csvClass.getName().equals("com.cricketleagueanalyser.model.IPLRunsCSV")) {
                 StreamSupport.stream(csvIterable.spliterator(), false)
                         .map(IPLRunsCSV.class::cast)
-                        .forEach(censusCSV -> csvFileList.add(new IPLDAO(censusCSV)));
+                        .forEach(iplCsv -> csvFileList.add(new IPLDAO(iplCsv)));
             } else if (csvClass.getName().equals("com.cricketleagueanalyser.model.IPLWktsCSV")) {
                 StreamSupport.stream(csvIterable.spliterator(), false)
                         .map(IPLWktsCSV.class::cast)
-                        .forEach(censusCSV -> csvFileList.add(new IPLDAO(censusCSV)));
+                        .forEach(iplCsv -> csvFileList.add(new IPLDAO(iplCsv)));
             }
             return csvFileList;
         } catch (IOException e) {

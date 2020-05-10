@@ -22,5 +22,6 @@ public class IPLDAO {
     public IPLDAO(IPLWktsCSV iplCSV) {
         player = iplCSV.player;
         average = iplCSV.average;
+        strikingRates = iplCSV.strikeRate;
     }
 }

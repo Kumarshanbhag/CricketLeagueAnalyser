@@ -179,7 +179,7 @@ public class CricketLeagueAnalyserTest {
     public void givenIplData_WhenSortedOnRunsWithBowlingAverageAndNoDataFound_ShouldReturnException() {
         List emptyList = new ArrayList();
         try {
-            cricketLeagueAnalyser.analyseIPLData(CricketLeagueAnalyser.BatOrBall.BALLING, IPL_2019_MOST_RUNS_CSV_PATH);
+            cricketLeagueAnalyser.analyseIPLData(CricketLeagueAnalyser.BatOrBall.BALLING, IPL_2019_MOST_WKTS_CSV_PATH);
             cricketLeagueAnalyser.sortListAndConvertJson(SortByField.AVG, emptyList);
         } catch (CricketLeagueAnalyserException e) {
             Assert.assertEquals(CricketLeagueAnalyserException.ExceptionType.NO_CENSUS_DATA, e.type);
@@ -189,9 +189,18 @@ public class CricketLeagueAnalyserTest {
     @Test
     public void givenIplData_WhenSortedOnRunsWithFieldingAverageAndNoDataFound_ShouldReturnException() {
         try {
-            cricketLeagueAnalyser.analyseIPLData(CricketLeagueAnalyser.BatOrBall.FIELDING, IPL_2019_MOST_RUNS_CSV_PATH);
+            cricketLeagueAnalyser.analyseIPLData(CricketLeagueAnalyser.BatOrBall.FIELDING, IPL_2019_MOST_WKTS_CSV_PATH);
         } catch (CSVBuilderException e) {
             Assert.assertEquals(CSVBuilderException.ExceptionType.UNABLE_TO_PARSE, e.type);
         }
+    }
+
+    //UC8
+    @Test
+    public void givenIplCSVFile_ShouldReturnTopStrikingRateOfBowlers() {
+        List cricketersList = cricketLeagueAnalyser.analyseIPLData(CricketLeagueAnalyser.BatOrBall.BALLING, IPL_2019_MOST_WKTS_CSV_PATH);
+        String cricketersDataInJson = cricketLeagueAnalyser.sortListAndConvertJson(SortByField.STRIKINGRATES, cricketersList);
+        IPLDAO[] iplDao = new Gson().fromJson(cricketersDataInJson, IPLDAO[].class);
+        Assert.assertEquals("Krishnappa Gowtham", iplDao[0].player);
     }
 }
