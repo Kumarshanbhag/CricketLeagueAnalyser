@@ -11,8 +11,7 @@ public class IPLAdapterFactory {
             return new IPLBattingAdapter().loadIPLData(csvFilePath);
         else if (gameFact.equals(CricketLeagueAnalyser.BatOrBall.BALLING))
             return new IPLBowlingAdapter().loadIPLData(csvFilePath);
-        else
-            throw new CSVBuilderException("NO CSV FILE FOUND", CSVBuilderException.ExceptionType.UNABLE_TO_PARSE);
+        throw new CSVBuilderException("NO CSV FILE FOUND", CSVBuilderException.ExceptionType.UNABLE_TO_PARSE);
     }
 }
 

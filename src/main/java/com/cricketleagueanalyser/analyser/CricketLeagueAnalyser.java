@@ -16,7 +16,7 @@ public class CricketLeagueAnalyser {
     private Map<SortByField, Comparator<IPLDAO>> sortMap;
 
     public enum BatOrBall {
-        BATTING, BALLING
+        BATTING, FIELDING, BALLING
     }
 
     public CricketLeagueAnalyser() {

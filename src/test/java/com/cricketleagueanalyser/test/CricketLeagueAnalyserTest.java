@@ -185,4 +185,13 @@ public class CricketLeagueAnalyserTest {
             Assert.assertEquals(CricketLeagueAnalyserException.ExceptionType.NO_CENSUS_DATA, e.type);
         }
     }
+
+    @Test
+    public void givenIplData_WhenSortedOnRunsWithFieldingAverageAndNoDataFound_ShouldReturnException() {
+        try {
+            cricketLeagueAnalyser.analyseIPLData(CricketLeagueAnalyser.BatOrBall.FIELDING, IPL_2019_MOST_RUNS_CSV_PATH);
+        } catch (CSVBuilderException e) {
+            Assert.assertEquals(CSVBuilderException.ExceptionType.UNABLE_TO_PARSE, e.type);
+        }
+    }
 }
