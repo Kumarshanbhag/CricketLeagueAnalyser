@@ -7,7 +7,7 @@ public class IPLWktsCSV {
     public String player;
 
     @CsvBindByName(column = "Avg", required = true)
-    public double average;
+    public double ballAverage;
 
     @CsvBindByName(column = "SR", required = true)
     public double strikeRate;
